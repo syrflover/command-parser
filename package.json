@@ -1,0 +1,22 @@
+{
+    "name": "command-parser",
+    "version": "0.0.1",
+    "main": "build/commandParser.js",
+    "types": "build/commandParser.d.ts",
+    "license": "MIT",
+    "scripts": {
+        "test": "ts-mocha test/**/*.spec.ts",
+        "build": "rm -rf ./build && tsc -p tsconfig.json"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.7",
+        "chai": "^4.2.0",
+        "mocha": "^6.1.4",
+        "ts-mocha": "^6.0.0",
+        "ts-node": "^8.3.0",
+        "tslint": "^5.18.0",
+        "tslint-config-airbnb": "^5.11.1",
+        "typescript": "^3.5.2"
+    }
+}
