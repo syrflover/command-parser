@@ -52,7 +52,7 @@ export const commandParser = <
 ): R => {
     const st = [...input.split(' ').filter((e) => e.replace(/ /g, '')), ''];
 
-    const r = { content: input } as IBaseCommandParseResult;
+    const r = { content: input.trim() } as IBaseCommandParseResult;
 
     for (const flag in flags) {
         const flagIndex = st.findIndex((s) => s === `--${flag}`);
