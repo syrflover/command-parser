@@ -7,6 +7,7 @@ export const enum Flag {
 
 export interface IFlags {
     [flag: string]: {
+        short?: string;
         type: Flag;
         default: any;
     };
@@ -55,7 +56,13 @@ export const commandParser = <
     const r = { content: input.trim() } as IBaseCommandParseResult;
 
     for (const flag in flags) {
-        const flagIndex = st.findIndex((s) => s === `--${flag}`);
+        const flagIndex = st.findIndex((s) => {
+            const a = s === `--${flag}`;
+            if (flags[flag].short) {
+                return a || s === `-${flags[flag].short}`;
+            }
+            return a;
+        });
 
         const hasNotFlag = flagIndex === -1;
 
@@ -70,6 +77,8 @@ export const commandParser = <
         r.content = r.content
             .replace(`--${flag} ${parameter}`, '')
             .replace(`--${flag}`, '')
+            .replace(`-${flags[flag].short || `--${flag}`} ${parameter}`, '')
+            .replace(`-${flags[flag].short || `--${flag}`}`, '')
             .trim();
     }
 

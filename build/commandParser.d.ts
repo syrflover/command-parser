@@ -6,6 +6,7 @@ export declare const enum Flag {
 }
 export interface IFlags {
     [flag: string]: {
+        short?: string;
         type: Flag;
         default: any;
     };

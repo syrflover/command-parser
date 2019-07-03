@@ -203,6 +203,54 @@ describe('test commandParser', () => {
         });
     });
 
+    describe('short flag', () => {
+        it('short', () => {
+            interface IResult extends IBaseCommandParseResult {
+                str: string;
+            }
+
+            const input = '-s string hello world';
+
+            const flags: IFlags = {
+                str: {
+                    short: 's',
+                    type: Flag.string,
+                    default: true,
+                },
+            };
+
+            const result = commandParser<IResult>(input, flags);
+
+            assert.deepStrictEqual(result, {
+                content: 'hello world',
+                str: 'string',
+            });
+        });
+
+        it('not short', () => {
+            interface IResult extends IBaseCommandParseResult {
+                str: string;
+            }
+
+            const input = '--str string hello world';
+
+            const flags: IFlags = {
+                str: {
+                    short: 's',
+                    type: Flag.string,
+                    default: true,
+                },
+            };
+
+            const result = commandParser<IResult>(input, flags);
+
+            assert.deepStrictEqual(result, {
+                content: 'hello world',
+                str: 'string',
+            });
+        });
+    });
+
     describe('throw error', () => {
         it('must be float', (done) => {
             interface IResult extends IBaseCommandParseResult {

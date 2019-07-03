@@ -23,9 +23,15 @@ const parseParameter = (param, flag) => {
 };
 exports.commandParser = (input, flags) => {
     const st = [...input.split(' ').filter((e) => e.replace(/ /g, '')), ''];
-    const r = { content: input };
+    const r = { content: input.trim() };
     for (const flag in flags) {
-        const flagIndex = st.findIndex((s) => s === `--${flag}`);
+        const flagIndex = st.findIndex((s) => {
+            const a = s === `--${flag}`;
+            if (flags[flag].short) {
+                return a || s === `-${flags[flag].short}`;
+            }
+            return a;
+        });
         const hasNotFlag = flagIndex === -1;
         const parameter = hasNotFlag
             ? flags[flag].default
@@ -37,6 +43,8 @@ exports.commandParser = (input, flags) => {
         r.content = r.content
             .replace(`--${flag} ${parameter}`, '')
             .replace(`--${flag}`, '')
+            .replace(`-${flags[flag].short || `--${flag}`} ${parameter}`, '')
+            .replace(`-${flags[flag].short || `--${flag}`}`, '')
             .trim();
     }
     return r;
