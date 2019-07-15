@@ -1,12 +1,13 @@
 {
-    "name": "command-parser",
+    "name": "@syrflover/command-parser",
     "version": "0.0.1",
     "main": "build/commandParser.js",
     "types": "build/commandParser.d.ts",
     "license": "MIT",
     "scripts": {
         "test": "ts-mocha test/**/*.spec.ts",
-        "build": "rm -rf ./build && tsc -p tsconfig.json"
+        "build": "rm -rf ./build && tsc -p tsconfig.json",
+        "prepublish": "npm run build"
     },
     "devDependencies": {
         "@types/chai": "^4.1.7",
