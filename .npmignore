@@ -127,4 +127,4 @@ yarn*
 package-lock.json
 npm*
 
-build/
+.gitignore
