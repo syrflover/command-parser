@@ -4,6 +4,15 @@
     "main": "build/commandParser.js",
     "types": "build/commandParser.d.ts",
     "license": "MIT",
+    "author": {
+        "name": "syrflover",
+        "email": "syr@meu.works",
+        "url": "https://github.com/syrflover"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syrflover/command-parser"
+    },
     "scripts": {
         "test": "ts-mocha test/**/*.spec.ts",
         "build": "rm -rf ./build && tsc -p tsconfig.json",
@@ -19,5 +28,11 @@
         "tslint": "^5.18.0",
         "tslint-config-airbnb": "^5.11.1",
         "typescript": "^3.5.2"
-    }
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/syrflover/command-parser/blob/master/LICENSE"
+        }
+    ]
 }
