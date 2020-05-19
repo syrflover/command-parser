@@ -1,4 +1,4 @@
-export const enum Flag {
+export enum Flag {
     float = 'float',
     int = 'int',
     string = 'string',
@@ -45,9 +45,7 @@ const parseParameter = (param: string, flag: { name: string; type: Flag }) => {
     }
 };
 
-export const commandParser = <
-    R extends IBaseCommandParseResult = IBaseCommandParseResult
->(
+export const commandParser = <R extends IBaseCommandParseResult = IBaseCommandParseResult>(
     input: string,
     flags: IFlags,
 ): R => {
